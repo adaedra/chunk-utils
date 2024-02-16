@@ -1,0 +1,3 @@
+= chunk-utils
+
+A collection of program utilities to manipulate Minecraft save data, more particularly region files and contained _chunks_.

@@ -1,0 +1,10 @@
+AccessModifierOffset: -4
+AlignAfterOpenBracket: BlockIndent
+ColumnLimit: 120
+Cpp11BracedListStyle: false
+FixNamespaceComments: false
+IndentWidth: 4
+InsertNewlineAtEOF: true
+NamespaceIndentation: All
+PointerAlignment: Middle
+SpaceBeforeCpp11BracedList: true

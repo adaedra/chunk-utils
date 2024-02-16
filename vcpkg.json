@@ -1,0 +1,27 @@
+{
+  "name": "chunk-utils",
+  "version-string": "1.0.0",
+  "builtin-baseline": "6978381401d33a5ad6a3385895d12e383083712a",
+  "dependencies": [
+    {
+      "name": "boost-program-options",
+      "version>=": "1.84.0"
+    },
+    {
+      "name": "boost-iostreams",
+      "version>=": "1.84.0"
+    },
+    {
+      "name": "boost-endian",
+      "version>=": "1.84.0"
+    },
+    {
+      "name": "fmt",
+      "version>=": "10.2.1"
+    },
+    {
+      "name": "zlib",
+      "version>=": "1.3.1"
+    }
+  ]
+}
