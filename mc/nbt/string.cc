@@ -18,3 +18,5 @@ mc::nbt::string mc::nbt::string::parse(input & input) {
 }
 
 void mc::nbt::string::snbt(std::ostream & stream) const { stream << '"' << _s << '"'; }
+
+std::string const & mc::nbt::string::data() const { return _s; }

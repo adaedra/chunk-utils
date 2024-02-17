@@ -15,6 +15,8 @@ namespace mc::nbt {
 
         void snbt(std::ostream &) const override;
 
+        [[nodiscard]] std::string const & data() const;
+
     private:
         std::string _s;
     };

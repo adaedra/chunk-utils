@@ -23,3 +23,5 @@ set_property(TARGET mc PROPERTY CXX_EXTENSIONS OFF)
 target_include_directories(mc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(mc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries(mc Boost::boost Boost::iostreams ZLIB::ZLIB fmt::fmt)
+
+add_subdirectory(tests)
