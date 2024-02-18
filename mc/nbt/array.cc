@@ -1,9 +1,16 @@
 #include "mc/nbt/array.hh"
+#include "array_stream.hh"
 #include "input.hh"
 
 #include <algorithm>
+#include <fmt/format.h>
 
 template <typename T> mc::nbt::array<T>::array() = default;
+
+template <typename T> mc::nbt::array<T>::array(std::span<T> const & other) {
+    _v.reserve(other.size());
+    std::ranges::copy(other, std::back_insert_iterator(_v));
+}
 
 template <typename T> uint8_t mc::nbt::array<T>::tag() const { return TAG; }
 
@@ -22,9 +29,16 @@ template <typename T> mc::nbt::array<T> mc::nbt::array<T>::parse(input & input) 
 
 template <typename T> void mc::nbt::array<T>::snbt(std::ostream & stream) const {
     stream << '[' << SNBT_TAG << ';';
-    std::ostream_iterator<char> out(stream, ",");
-    std::ranges::copy(_v, out);
+
+    array_stream out { stream };
+    for (auto const & it : _v) {
+        out << fmt::format("{}", it.value());
+    }
     stream << ']';
+}
+
+template <typename T> std::vector<typename mc::nbt::array<T>::item_t> const & mc::nbt::array<T>::data() const {
+    return _v;
 }
 
 template <> uint8_t const mc::nbt::array<int8_t>::TAG { 7 };
