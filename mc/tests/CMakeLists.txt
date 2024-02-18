@@ -1,5 +1,7 @@
 add_executable(mc_tests
         tests.cc
+        ../nbt/array.test.cc
+        ../nbt/string.test.cc
 )
 set_property(TARGET mc_tests PROPERTY CXX_STANDARD 20)
 set_property(TARGET mc_tests PROPERTY CXX_EXTENSIONS OFF)
