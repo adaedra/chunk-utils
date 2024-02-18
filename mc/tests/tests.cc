@@ -1,7 +1,6 @@
 #include <boost/iostreams/device/array.hpp>
 #include <boost/iostreams/stream.hpp>
 #include <boost/test/included/unit_test.hpp>
-#include <sstream>
 
 #include "input.hh"
 #include "mc/nbt/array.hh"
@@ -33,9 +32,7 @@ void encode_array_snbt() {
     int32_t data[] = { 1, 2, 3 };
     auto array { mc::nbt::array<int32_t>(data) };
 
-    std::stringstream res;
-    array.snbt(res);
-    BOOST_CHECK_EQUAL("[I;1,2,3]", res.str());
+    BOOST_CHECK_EQUAL("[I;1,2,3]", static_cast<mc::nbt::base &>(array).snbt());
 }
 
 test_suite * init_unit_test_suite(int, char **) {
