@@ -12,13 +12,11 @@ mc::nbt::base::base(base &&) noexcept = default;
 
 mc::nbt::base::~base() = default;
 
-template <typename T> static std::unique_ptr<mc::nbt::base> parse(mc::input & stream) {
-    return std::make_unique<T>(T::parse(stream));
-}
+template <typename T> static mc::nbt::any parse(mc::input & stream) { return std::make_unique<T>(T::parse(stream)); }
 
 static std::unique_ptr<mc::nbt::base> parse_list(mc::input & stream) { return mc::nbt::list_base::parse(stream); }
 
-std::unordered_map<uint8_t, std::unique_ptr<mc::nbt::base> (*)(mc::input &)> const mc::nbt::base::TYPES {
+std::unordered_map<uint8_t, mc::nbt::any (*)(mc::input &)> const mc::nbt::base::TYPES {
     { compound::TAG, ::parse<compound> },
     { string::TAG, ::parse<string> },
     { primitive<int8_t>::TAG, ::parse<primitive<int8_t>> },
