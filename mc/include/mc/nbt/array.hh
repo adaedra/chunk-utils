@@ -13,6 +13,10 @@ namespace mc::nbt {
 
         array();
         explicit array(std::span<T> const &);
+        array(array const &);
+        array(array &&) noexcept;
+        [[nodiscard]] any clone() const override;
+
         static array parse(input &);
 
         static uint8_t const TAG;

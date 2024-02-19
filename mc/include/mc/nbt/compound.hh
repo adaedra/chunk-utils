@@ -15,6 +15,9 @@ namespace mc::nbt {
         static uint8_t const END;
 
         compound();
+        compound(compound const &);
+        [[nodiscard]] any clone() const override;
+
         static compound parse(input &);
 
         void snbt(std::ostream &) const override;

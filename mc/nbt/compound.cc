@@ -14,6 +14,15 @@ uint8_t mc::nbt::compound::tag() const { return TAG; }
 
 mc::nbt::compound::compound() = default;
 
+mc::nbt::compound::compound(compound const & other) {
+    _values.reserve(other._values.size());
+    for (auto const & [key, value] : other._values) {
+        _values.emplace(key, value->clone());
+    }
+}
+
+mc::nbt::any mc::nbt::compound::clone() const { return std::make_unique<compound>(*this); }
+
 mc::nbt::compound mc::nbt::compound::parse(input & input) {
     compound result;
 

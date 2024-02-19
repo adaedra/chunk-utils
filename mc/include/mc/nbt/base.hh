@@ -16,6 +16,8 @@ namespace mc {
             base(base &&) noexcept;
             virtual ~base();
 
+            [[nodiscard]] virtual any clone() const = 0;
+
             virtual void snbt(std::ostream &) const = 0;
             [[nodiscard]] std::string snbt() const;
 

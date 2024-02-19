@@ -7,7 +7,7 @@
 
 void decode_array() {
     char data[] = { 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 2 };
-    boost::iostreams::stream<boost::iostreams::array_source> in { data, 12 };
+    boost::iostreams::stream<boost::iostreams::array_source> in { data, sizeof(data) };
     mc::input input { in };
 
     auto res { mc::nbt::array<int32_t>::parse(input) };

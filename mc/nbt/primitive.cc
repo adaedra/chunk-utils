@@ -4,10 +4,16 @@
 
 template <typename T> mc::nbt::primitive<T>::primitive(T const & v) : _v { v } {}
 
+template <typename T> mc::nbt::primitive<T>::primitive(primitive const & other) : primitive(other._v) {}
+
+template <typename T> mc::nbt::any mc::nbt::primitive<T>::clone() const { return std::make_unique<primitive>(_v); }
+
 template <typename T> mc::nbt::primitive<T> mc::nbt::primitive<T>::parse(input & input) {
     auto v { input.value<item_t>() };
     return primitive(v);
 }
+
+template <typename T> T mc::nbt::primitive<T>::value() const { return _v.value(); }
 
 template class mc::nbt::primitive<int8_t>;
 template <> uint8_t const mc::nbt::primitive<int8_t>::TAG { 1 };

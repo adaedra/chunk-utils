@@ -11,6 +11,9 @@ namespace mc::nbt {
         [[nodiscard]] uint8_t tag() const override;
 
         explicit string(std::string &&);
+        string(string const &);
+        [[nodiscard]] any clone() const override;
+
         static string parse(input &);
 
         void snbt(std::ostream &) const override;
